@@ -32,4 +32,8 @@ npm-debug.log
 # Environment
 .env
 
+# seed
 database/seed
+
+# git
+.gitignore
