@@ -1,0 +1,20 @@
+{
+    "USER_NOT_FOUND": "Usuario no encontrado",
+    "USER_NOT_FOUND_ID": "Id de usuario no encontrado en la petición",
+    "INVALID_PASS": "Password incorrecto",
+    "USER_EXIST":  "Usuario Existente",
+    "ENTER_NUMBER": "Usar valor numérico",
+    "FIRST_NUMBER_SHOULD_BE_SMALLER_THAN_SECOND": "El primer numero no puede ser igual o mayor que el segundo",
+    "TOO_MANY_ARGUMENTS": "Muchos argumentos para el filtro",
+    "TOKEN_NOT_SAVED": "Token no grabado",
+    "TOKEN_DELETED": "Token fue eliminado",
+    "FAILED_AUTH": "Fallo al autentificar token",
+    "NO_TOKEN": "No se recibio el Token",
+    "EXISTING_TOKEN": "Token ya existe",
+    "USE_AUTH_ROUTE": "Use route con autentificacion",
+    "TOKEN_IS_NOT_FROM_USER": "El token no pertenece al usuario",
+    "NOT_FOUND_ANNOUNCES_IN_DB": "No encontrado anuncios en db",
+    "NOT_FOUND_TAG_ANNOUNCES_IN_DB": "Tag de anuncios no encontrados into db",
+    "ANNOUNCE_SAVED": "Anuncio guardado correctamente !",
+    "ANNOUNCE_SAVED_ERROR": "Anuncio no guardado, hubo un error"
+}

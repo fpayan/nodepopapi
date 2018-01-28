@@ -1,0 +1,45 @@
+{
+  "name": "nodeapi-devops",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "DEBUG=nodepop:* NODE_PATH=lib NODE_ENV=production nodemon ./bin/www",
+    "startDev": "DEBUG=nodepop:* NODE_PATH=lib NODE_ENV=development nodemon ./bin/www",
+    "seed-db": "NODE_PATH=lib node ./database/seed/create.full.db.fake.js",
+    "jshint": "jshint --exclude ./node_modules . || true",
+    "jscs": "jscs . || true"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^4.0.0",
+    "ejs": "~2.5.7",
+    "express": "~4.15.5",
+    "i18next": "^10.3.0",
+    "i18next-express-middleware": "^1.0.9",
+    "i18next-node-fs-backend": "^1.0.0",
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.5",
+    "jsonwebtoken": "^8.1.1",
+    "moment": "^2.20.1",
+    "mongoose": "^5.0.1",
+    "morgan": "~1.9.0",
+    "node-sass-middleware": "0.9.8",
+    "passport-jwt": "^3.0.1",
+    "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "browserify": "^15.2.0",
+    "fake": "^0.2.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject": "^4.3.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^5.0.0",
+    "jsdoc": "^3.5.5",
+    "nodemon": "^1.14.11"
+  }
+}
