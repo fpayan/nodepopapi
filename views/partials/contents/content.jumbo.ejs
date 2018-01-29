@@ -4,15 +4,17 @@
         <p class="lead p-jumbo">Si deseas anunciar un productos para vender o mirar productos para comprar, esta es tú web !</p>
         <div class="row">
             <div class="col-md-6 col-lg-6">
-                <button id="btn-login" type="button" class="btn btn-primary btn-lg btn-block">Login</button>
+                <button id="btn-login" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalLogin">Login</button>
             </div>
 
             <div class="col-md-6 col-lg-6">
-                <button id="btn-registro" type="button" class="btn btn-default btn-lg btn-block">Registro</button>
+                <button id="btn-registro" type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#modalRegister">Registro</button>
             </div>
             
         </div>
     </div> <!-- .jumbotron end -->
+<%- include('../modals/modal.login.ejs') %>
+<%- include('../modals/modal.register.ejs') %>
 </div> <!-- .container end -->
 
 

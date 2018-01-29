@@ -1,0 +1,41 @@
+<!-- Modal login -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modal_label_login">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- modal header -->
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modal_label_login">Login</h4>
+            </div>
+            <!-- body modal login -->
+            <div class="modal-body">
+                <div class="card card-container">
+                    <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                    <p id="profile-name" class="profile-name-card"></p>
+                    <form class="form-signin">
+                        <span id="reauth-email" class="reauth-email"></span>
+                        <input type="email" name="loginEmail" id="loginEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="password" name="loginPassword" id="loginPassword" class="form-control" placeholder="Password" required>
+                        <div id="remember" class="checkbox">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                    </form><!-- /form -->
+                    <a href="#" class="forgot-password">
+                        Forgot the password?
+                    </a>
+                </div><!-- /card-container -->
+                
+            </div>
+            <!-- modal footer -->
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="btnSendLogin" class="btn btn-primary">Send Login</button>
+            </div> <!-- .modal-footer -->
+        </div>
+    </div>
+</div>
+<!-- MODAL END LOGIN -->
+

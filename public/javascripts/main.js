@@ -16,11 +16,11 @@
             btn_registro = $("#btn-registro");
 
         btn_login.on('click', ()=>{
-            swal("Hello world!");
+            //swal("Hello world!");
         });
         //
         btn_registro.on('click', ()=>{
-            swal("Hello world!");
+            //swal("Hello world!");
         });
         $('#goAnnounce').on('click', ()=>{
             try{
