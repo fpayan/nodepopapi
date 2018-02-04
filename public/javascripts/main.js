@@ -12,8 +12,11 @@
 		});
         //
         /* AXIOS */
-        let btn_login = $("#btn-login"),
-            btn_registro = $("#btn-registro");
+        let btn_login = $("#btn-login"), // button launch modal form for login user
+            btn_registro = $("#btn-registro"), // button launch modal form for register user
+            in_loginEmail = $("#loginEmail"), // input email login user.
+            in_loginPassword = $("#loginPassword"), // input pass login user.
+            btn_btnSubmitLogin = $("#btnSubmitLogin"); // Submit login user button.
 
         btn_login.on('click', ()=>{
             //swal("Hello world!");

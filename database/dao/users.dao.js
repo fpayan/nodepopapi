@@ -98,9 +98,8 @@ module.exports.deleteUser = async(req, res, next)=>{
 
 /**@module dao/user */
 module.exports.findUserToAutentication = async(req, res, next)=>{
-    let _email = req.body.email;
-    let _pass = req.body.password;
-    let _cross = req.body.cross || false;
+    let _email = req.body.loginEmail;
+    let _pass = req.body.loginPassword;
     let _passHash = '';
     let _msgError = '';
 
@@ -109,15 +108,13 @@ module.exports.findUserToAutentication = async(req, res, next)=>{
     query.exec((err, user)=>{
         let result = {};
         if(err){
-            return res.status().render('error',{
+            return res.status(402).render('error',{
                 success: false,
-                message: err.message,
-                error: true,
-                cross: _cross
+                message: err.message
             });
         }
         if(user){
-            if(_cross && user.password === crypto.createHash('sha256').update(_pass).digest('hex')){
+            if(user.password === crypto.createHash('sha256').update(_pass).digest('hex')){
                 // User and password OK
                 let token = jwt.sign({
                     id: user._id
@@ -125,51 +122,22 @@ module.exports.findUserToAutentication = async(req, res, next)=>{
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
                 
-                return res.status(200).render('user',{
+                return res.status(200).json({
                     success: true,
                     message: 'User validated',
                     token: token,
-                    cross: true
-                });
-            }
-            else if( ! _cross && user.password === crypto.createHash('sha256').update(_pass).digest('hex') ){
-                let token = jwt.sign({
-                    id: user._id
-                }, process.env.JWT_SECRET, {
-                    expiresIn: process.env.JWT_EXPIRES_IN
-                });
-                return res.json({
-                    success: true,
-                    message: 'User validated',
-                    token: token,
-                    cross: false
+                    connected: true
                 });
             }
         }
         else{ // Not user
-            if(_cross){
-                _msgError = req.t('USER_NOT_FOUND') || 'User not found';
-                return res.status(200).render('login',{
-                        success: false,
-                        message: _msgError,
-                        error: "redirect",
-                        cross: _cross
-                    });
-            }
-            else{
-                _msgError = req.t('USER_NOT_FOUND') || 'User not found';
-                return res.json({
-                    success: false,
-                    message: _msgError,
-                    error: "redirect",
-                    cross: false
-                });
-            }
+            _msgError = req.t('USER_NOT_FOUND') || 'User not found';
+            return res.status(402).json({
+                success: false,
+                message: _msgError
+            });
         }
-        
-        
     });
-
 };
 
 /**@module dao/user */

@@ -6,4 +6,12 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.get('/test', function(req, res, next) {
+  res.send('respond with a resource TEST');
+});
+
+router.post('/', function(req, res, next){
+  res.send('respond with a resource : ' + req.body._csrf + ' - ' + req.session.id );
+});
+
 module.exports = router;

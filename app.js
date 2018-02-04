@@ -1,19 +1,22 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var sassMiddleware = require('node-sass-middleware');
+const express = require('express');
+const helmet = require('helmet');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const sassMiddleware = require('node-sass-middleware');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const i18next = require('./middlewares/middleware_i18n');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+//
+app.use(helmet());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -28,6 +31,36 @@ app.use(cookieParser());
 //   sourceMap: true
 // }));
 app.use(express.static(path.join(__dirname, 'public')));
+//
+// i18next for all request
+app.use(i18next.i18nextMiddleware);
+// Load Connect DB
+require('./lib/connectMongoose');
+//
+//-momery unleaked---------
+app.set('trust proxy', 1);
+//
+app.use(session({
+    secret: 'nodepopapiKeepcoding2018version1',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: true,
+      path: "/",
+      maxAge:  60 * 60 * 60 //30 mins
+    },
+    // store: new MongoStore({ url: '<mongoose connection url>'  })
+
+}));
+
+var index = require('./routes/index');
+var users = require('./routes/users');
+
+// Controllers
+require('./controllers/users.api.controllers');
+
+// Routers
+require('./routes/api/users.router')(app);
 
 app.use('/', index);
 app.use('/users', users);
